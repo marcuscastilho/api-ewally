@@ -6,7 +6,6 @@ class DatabaseLogsRepository implements ILogsRepository {
 
   async create(log: Log): Promise<void> {
     this.logs.push(log);
-    console.log(this.logs)
   }
 }
 

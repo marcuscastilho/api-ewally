@@ -1,12 +1,23 @@
+import { Response, NextFunction } from "express";
+import { IRequest } from '../types/IRequest'
 import { createLogControler } from "../useCases/CreateLog";
 
-const registerLog = async (request, response, next) => {
-  try {
-    await createLogControler.handle(request);
+import { ResponseController } from "../responses/ResponseController";
 
+
+
+const registerLog = async (
+  request: IRequest,
+  response: Response,
+  next: NextFunction
+) => {
+  try {
+    const log = await createLogControler.handle(request);
+    request.log = log;
     next();
   } catch (err) {
-    return err;
+    const handleError = new ResponseController(response, request, err);
+    await handleError.toRespond();
   }
 };
 

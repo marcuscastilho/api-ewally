@@ -1,4 +1,4 @@
-import { userRouter } from "./user";
+import { userRoutes } from "./user";
 
-const routes = [userRouter];
+const routes = [userRoutes];
 export { routes };

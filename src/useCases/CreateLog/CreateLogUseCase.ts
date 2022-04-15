@@ -9,6 +9,8 @@ class CreateLogUseCase {
     const log = new Log(data);
 
     await this.logsRepository.create(log);
+
+    return log
   }
 }
 

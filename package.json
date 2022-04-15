@@ -14,7 +14,8 @@
     "http": "^0.0.1-security",
     "joi": "^17.6.0",
     "remove": "^0.1.5",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "youch": "^3.1.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
