@@ -1,8 +1,8 @@
 import "dotenv/config";
-import { app } from "./app";
 import http from "http";
+import { appRoutes } from "./routes";
 
-const server = http.createServer(app);
+const server = http.createServer(appRoutes);
 
 server.listen({ port: process.env.PORT, hostname: process.env.HOST });
 

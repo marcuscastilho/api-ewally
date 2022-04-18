@@ -1,5 +1,5 @@
 import { Response, NextFunction } from "express";
-import { IRequest } from '../types/IRequest'
+import { IRequest } from "../types/IRequest";
 import { Schema } from "joi";
 import { BodyContentError } from "../responses/errors/BodyContentError";
 import { ResponseController } from "../responses/ResponseController";
@@ -8,11 +8,13 @@ const validationSchema = async (
   request: IRequest,
   response: Response,
   next: NextFunction,
-  schema: Schema
+  schema: Schema,
+  data: any
 ) => {
   try {
     try {
-      await schema.validateAsync(request.body);
+      console.log(data)
+      await schema.validateAsync(data);
       next();
     } catch (err) {
       throw new BodyContentError({

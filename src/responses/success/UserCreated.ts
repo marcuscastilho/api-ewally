@@ -4,7 +4,7 @@ class UserCreated extends Error {
   public readonly message: string;
   public readonly solution: string ;
 
-  constructor() {
+  constructor(message?: string) {
     super("UserCreated");
     this.name = "UserCreated";
     this.message = "Usuário criado com sucesso";
