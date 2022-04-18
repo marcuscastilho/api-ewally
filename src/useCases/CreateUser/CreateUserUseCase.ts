@@ -1,4 +1,5 @@
 import { User } from "../../models/User";
+import { DuplicateUserError } from "../../responses/errors/DuplicateUserError";
 import { IUsersRepository } from "../../respositories/IUsersRepository";
 import { ICreateUserRequestDTO } from "./CreateUserDTO";
 
@@ -11,7 +12,7 @@ class CreateUserUseCase {
     );
 
     if (userAlreadyExists) {
-      throw new Error("User already exists.");
+      throw new DuplicateUserError();
     }
 
     const user = new User(data);

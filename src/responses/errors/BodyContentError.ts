@@ -1,4 +1,4 @@
-class ContentDocumentError extends Error {
+class BodyContentError extends Error {
   public readonly statusCode: number;
   public readonly name: string ;
   public readonly tag: string;
@@ -6,8 +6,8 @@ class ContentDocumentError extends Error {
   public readonly solution: string;
 
   constructor({ tag, message, solution }) {
-    super("ContentDocumentError");
-    this.name = "ContentDocumentError";
+    super("BodyContentError");
+    this.name = "BodyContentError";
     this.tag = tag;
     this.message = message;
     this.solution = solution;
@@ -25,4 +25,4 @@ class ContentDocumentError extends Error {
   }
 }
 
-export { ContentDocumentError };
+export { BodyContentError };

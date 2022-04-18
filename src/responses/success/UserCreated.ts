@@ -1,13 +1,13 @@
-class SuccessfullyAverbation extends Error {
+class UserCreated extends Error {
   public readonly statusCode: number;
   public readonly name: string ;
   public readonly message: string;
   public readonly solution: string ;
 
-  constructor(id) {
-    super("SuccessfullyAverbation");
-    this.name = "SuccessfullyAverbation";
-    this.message = "Averbação registrada com sucesso";
+  constructor() {
+    super("UserCreated");
+    this.name = "UserCreated";
+    this.message = "Usuário criado com sucesso";
     this.statusCode = 201;
   }
 
@@ -20,4 +20,4 @@ class SuccessfullyAverbation extends Error {
   }
 }
 
-export{ SuccessfullyAverbation };
+export{ UserCreated };
