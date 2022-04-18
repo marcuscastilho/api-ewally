@@ -1,14 +1,15 @@
-import { UserCreated } from '../responses/success/UserCreated';
+import { VerifiedBankSlip } from '../responses/success/VerifiedBankSlip';
 import { BankSlipSchema } from '../schemas/bankSlip'
+import { verifyBankSlipController } from '../useCases/VerifyBankSlip'
 
 
 const bankSlipRoutes = [
   {
     method: "get",
-    route: "/boleto/:id",
+    route: "/boleto/:barCode",
     action: "handle",
-    controller: "",
-    reponse_message: UserCreated,
+    controller: verifyBankSlipController,
+    reponse_message: VerifiedBankSlip,
     schema: BankSlipSchema,
     data_to_validate: 'params'
   },
