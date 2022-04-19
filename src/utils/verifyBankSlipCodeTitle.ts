@@ -1,7 +1,5 @@
-import { ContentError } from "../responses/errors/ContentError";
-import { formatDate } from "./formatDate";
-import { mountBarCode } from "./mountBarCode";
-import { verifyBankSlipDigitCheckFields } from "./verifyBankSlipDigitCheckFields";
+import { mountBarCodeTitle } from "./mountBarCodeTitle";
+import { verifyBankSlipTitleDigitCheckFields } from "./verifyBankSlipTitleDigitCheckFields";
 import { verifyBarCodeCheckDigit } from "./verifyBarCodeCheckDigit";
 import { verifyBarCodeExpirationFactor } from "./verifyBarCodeExpirationFactor";
 
@@ -30,11 +28,11 @@ const verifyBankSlipCodeTitle = (bank_slip_code: string) => {
     },
   };
 
-  verifyBankSlipDigitCheckFields(bank_slip_composition.field_1);
-  verifyBankSlipDigitCheckFields(bank_slip_composition.field_2);
-  verifyBankSlipDigitCheckFields(bank_slip_composition.field_3);
+  verifyBankSlipTitleDigitCheckFields(bank_slip_composition.field_1);
+  verifyBankSlipTitleDigitCheckFields(bank_slip_composition.field_2);
+  verifyBankSlipTitleDigitCheckFields(bank_slip_composition.field_3);
 
-  const bar_code = mountBarCode(bank_slip_composition);
+  const bar_code = mountBarCodeTitle(bank_slip_composition);
 
   const bar_code_composition = {
     banking_code_clearing_house: bar_code.substring(0, 3),
@@ -46,7 +44,7 @@ const verifyBankSlipCodeTitle = (bank_slip_code: string) => {
   };
 
   verifyBarCodeCheckDigit(bar_code, Number(bar_code_composition.check_digit));
-  const expirationDate = verifyBarCodeExpirationFactor(
+  const expiration_date = verifyBarCodeExpirationFactor(
     Number(bar_code_composition.expiration_factor)
   );
 
@@ -57,7 +55,7 @@ const verifyBankSlipCodeTitle = (bank_slip_code: string) => {
         "." +
         bar_code_composition.value.substring(8, 10)
     ),
-    expirationDate,
+    expirationDate: expiration_date,
   };
 
   return bank_slip_params;

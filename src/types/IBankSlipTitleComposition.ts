@@ -1,4 +1,5 @@
-export interface IBankSlipComposition {
+export interface IBankSlipTitleComposition
+ {
   field_1: {
     group_a: string;
     group_b: string;

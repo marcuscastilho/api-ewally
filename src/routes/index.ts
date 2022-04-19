@@ -1,12 +1,11 @@
 import { app } from "../app";
-import { userRoutes } from "./user";
 import { bankSlipRoutes } from "./bankSlip";
 import { IRequest } from "../types/IRequest";
 import { ResponseController } from "../responses/ResponseController";
 import { registerLog } from "../middlewares/registerLog";
 import { validationSchema } from "../middlewares/validationSchema";
 
-const routes = [...userRoutes, ...bankSlipRoutes];
+const routes = [...bankSlipRoutes];
 
 for (const route of routes) {
   app[route.method](

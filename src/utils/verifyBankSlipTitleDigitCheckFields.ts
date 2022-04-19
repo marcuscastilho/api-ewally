@@ -1,7 +1,7 @@
 import { ContentError } from "../responses/errors/ContentError";
 import { topTen } from "./topTen";
 
-const verifyBankSlipDigitCheckFields = (field) => {
+const verifyBankSlipTitleDigitCheckFields = (field) => {
   const { check_digit, ...values } = field;
 
   const figures = Object.values(values).join().replace(/,/g, "").split("");
@@ -47,4 +47,4 @@ const verifyBankSlipDigitCheckFields = (field) => {
   }
 };
 
-export { verifyBankSlipDigitCheckFields };
+export { verifyBankSlipTitleDigitCheckFields };

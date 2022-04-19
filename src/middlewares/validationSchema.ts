@@ -17,9 +17,9 @@ const validationSchema = async (
       next();
     } catch (err) {
       throw new ContentError({
-        tag: err.details[0].context.key,
-        message: err.details[0].message,
-        solution: "verificar parametros enviados",
+        tag: 'codigo do boleto',
+        message: "O código do boleto informado não é válido",
+        solution: "Verificar se o código do boleto foi digitado corretamente",
       });
     }
   } catch (err) {

@@ -1,6 +1,6 @@
-import { IBankSlipComposition } from "../types/IBankSlipComposition";
+import { IBankSlipTitleComposition } from "../types/IBankSlipTitleComposition";
 
-const mountBarCode = (bank_slip_composition: IBankSlipComposition) => {
+const mountBarCodeTitle = (bank_slip_composition: IBankSlipTitleComposition) => {
   let bar_code = "";
   // Código do Banco na Câmara de Compensação
   bar_code += bank_slip_composition.field_1.group_a;
@@ -17,7 +17,7 @@ const mountBarCode = (bank_slip_composition: IBankSlipComposition) => {
   // Valor
   bar_code += bank_slip_composition.field_5.group_v;
 
-  // Campo Livre 
+  // Campo Livre
   bar_code += bank_slip_composition.field_1.group_c;
   bar_code += bank_slip_composition.field_2.group_d;
   bar_code += bank_slip_composition.field_3.group_e;
@@ -25,4 +25,4 @@ const mountBarCode = (bank_slip_composition: IBankSlipComposition) => {
   return bar_code;
 };
 
-export { mountBarCode };
+export { mountBarCodeTitle };
