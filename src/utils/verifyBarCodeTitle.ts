@@ -1,7 +1,9 @@
 import { ContentError } from "../responses/errors/ContentError";
 import { formatDate } from "./formatDate";
+import { mountBarCode } from "./mountBarCode";
+import { topTen } from "./topTen";
 
-const verifyBarCodeFebraban = (bank_slip_code: string) => {
+const verifyBarCodeTitle = (bank_slip_code: string) => {
   const bank_slip_composition = {
     field_1: {
       group_a: bank_slip_code.substring(0, 3),
@@ -26,12 +28,14 @@ const verifyBarCodeFebraban = (bank_slip_code: string) => {
     },
   };
 
-  verifyDigitCheckFields(bank_slip_composition.field_1)
+  verifyDigitCheckFields(bank_slip_composition.field_1);
+  verifyDigitCheckFields(bank_slip_composition.field_2);
+  verifyDigitCheckFields(bank_slip_composition.field_3);
 
   function verifyDigitCheckFields(field) {
     const { check_digit, ...values } = field;
 
-    const figures = Object.values(values).join().replace(/,/g,'').split('');
+    const figures = Object.values(values).join().replace(/,/g, "").split("");
     const figures_reverse = figures.reverse();
 
     const minimum_weight = 1;
@@ -45,38 +49,44 @@ const verifyBarCodeFebraban = (bank_slip_code: string) => {
       }
 
       let multiplication_result = Number(item) * current_weight;
-      if(multiplication_result > 9){
-        const multiplication_result_split = String(multiplication_result).split('')
-        multiplication_result = Number(multiplication_result_split[0]) + Number(multiplication_result_split[1])
+      if (multiplication_result > 9) {
+        const multiplication_result_split = String(multiplication_result).split(
+          ""
+        );
+        multiplication_result =
+          Number(multiplication_result_split[0]) +
+          Number(multiplication_result_split[1]);
       }
       result += multiplication_result;
       current_weight++;
     }
 
-  
+    const top_ten = topTen(result);
 
-    console.log('result', result)
-    console.log('values', values)
-    console.log('check_digit', check_digit)
+    let possible_check_digit = top_ten - result;
 
-    // let possible_check_digit = 11 - (result % 11);
+    if (possible_check_digit == 10) {
+      possible_check_digit = 0;
+    }
 
-    // if (
-    //   possible_check_digit == 0 ||
-    //   possible_check_digit == 10 ||
-    //   possible_check_digit == 11
-    // ) {
-    //   possible_check_digit = 1;
-    // }
-
-    // if (possible_check_digit != check_digit) {
-    //   throw new ContentError({
-    //     tag: "digito verificador",
-    //     message: "Digito verificador inválido",
-    //     solution: "Verficar o código de barras informado",
-    //   });
-    // }
+    if (possible_check_digit != check_digit) {
+      throw new ContentError({
+        tag: "digito verificador",
+        message: "Digito verificador inválido",
+        solution: "Verficar o código do boleto informado",
+      });
+    }
   }
+
+  const bar_code =  mountBarCode(bank_slip_composition)
+
+  console.log('bank_slip_code', bank_slip_code)
+  console.log('bar_code', bar_code)
+
+  function verifyDigitCheckBarCode(fiedl){
+
+  }
+
 };
 
 // const barcode_composition = {
@@ -158,4 +168,4 @@ const verifyBarCodeFebraban = (bank_slip_code: string) => {
 //   return formatDate(expiration_date);
 // }
 
-export { verifyBarCodeFebraban };
+export { verifyBarCodeTitle };
