@@ -59,7 +59,7 @@ const verifyBankSlipCodeConcessionaire = (bank_slip_code: string) => {
   }
   
 
-  verifyBarCodeConcessionaireCheckDigit(bar_code, Number(bar_code_composition.check_digit))
+  verifyBarCodeConcessionaireCheckDigit(bar_code, Number(bar_code_composition.check_digit), actual_value_identification)
   const expiration_date = verifyBarCodeConcessionaireExpirationFactor(
     bar_code_composition.expiration_factor
   );
