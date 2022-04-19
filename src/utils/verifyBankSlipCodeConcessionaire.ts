@@ -1,4 +1,7 @@
+import { mountBarCodeConcessionaire } from "./mountBarCodeConcessionaire";
 import { verifyBankSlipConcessionaireDigitCheckFields } from "./verifyBankSlipConcessionaireDigitCheckFields";
+import { verifyBarCodeConcessionaireCheckDigit } from "./verifyBarCodeConcessionaireCheckDigit";
+import { verifyBarCodeConcessionaireExpirationFactor } from "./verifyBarCodeConcessionaireExpirationFactor";
 
 const verifyBankSlipCodeConcessionaire = (bank_slip_code: string) => {
   const bank_slip_composition = {
@@ -20,22 +23,60 @@ const verifyBankSlipCodeConcessionaire = (bank_slip_code: string) => {
     },
   };
 
-  verifyBankSlipConcessionaireDigitCheckFields(bank_slip_composition.field_1);
-  verifyBankSlipConcessionaireDigitCheckFields(bank_slip_composition.field_2);
-  verifyBankSlipConcessionaireDigitCheckFields(bank_slip_composition.field_3);
-  verifyBankSlipConcessionaireDigitCheckFields(bank_slip_composition.field_4);
+  const actual_value_identification = bank_slip_code.substring(2, 3)
 
-  // const bar_code_composition = {
-  //   product_identification: bank_slip_code.substring(0, 1),
-  //   segment_idenfitication: bank_slip_code.substring(1, 2),
-  //   actual_value_identification: bank_slip_code.substring(2, 3),
-  //   check_digit: bank_slip_code.substring(3, 4),
-  //   value: bank_slip_code.substring(4, 15),
-  //   company_identification: bank_slip_code.substring(15, 19),
-  //   free_field_without_cnpj: bank_slip_code.substring(19, 44),
-  //   cnpj_mf: bank_slip_code.substring(15, 23),
-  //   free_field_with_cnpj: bank_slip_code.substring(23, 44),
-  // };
+  verifyBankSlipConcessionaireDigitCheckFields(bank_slip_composition.field_1, actual_value_identification);
+  verifyBankSlipConcessionaireDigitCheckFields(bank_slip_composition.field_2, actual_value_identification);
+  verifyBankSlipConcessionaireDigitCheckFields(bank_slip_composition.field_3, actual_value_identification);
+  verifyBankSlipConcessionaireDigitCheckFields(bank_slip_composition.field_4, actual_value_identification);
+
+  const bar_code = mountBarCodeConcessionaire(bank_slip_composition);
+  let bar_code_composition = null
+
+  // Verificando a utilização do Segmento 9
+  if(bar_code[1] == '9'){
+    bar_code_composition = {
+      product_identification: bar_code.substring(0, 1),
+      segment_idenfitication: bar_code.substring(1, 2),
+      actual_value_identification: bar_code.substring(2, 3),
+      check_digit: bar_code.substring(3, 4),
+      value: bar_code.substring(4, 15),
+      company_identification: bar_code.substring(15, 19),
+      free_field_without_cnpj: bar_code.substring(19, 44),
+      expiration_factor:  bar_code.substring(19, 27)
+    };
+  } else {
+    bar_code_composition = {
+      product_identification: bar_code.substring(0, 1),
+      segment_idenfitication: bar_code.substring(1, 2),
+      actual_value_identification: bar_code.substring(2, 3),
+      check_digit: bar_code.substring(3, 4),
+      value: bar_code.substring(4, 15),
+      company_identification: bar_code.substring(15, 23),
+      free_field_without_cnpj: bar_code.substring(23, 44),
+      expiration_factor:  bar_code.substring(23, 31)
+    };
+  }
+  
+
+  verifyBarCodeConcessionaireCheckDigit(bar_code, Number(bar_code_composition.check_digit))
+  const expiration_date = verifyBarCodeConcessionaireExpirationFactor(
+    bar_code_composition.expiration_factor
+  );
+
+
+  const bank_slip_params = {
+    barCode: bar_code,
+    amount:  parseFloat(
+      bar_code_composition.value.substring(0, 9) +
+        "." +
+        bar_code_composition.value.substring(9, 11)
+    ),
+    expirationDate: expiration_date,
+  };
+
+  return bank_slip_params;
 };
+
 
 export { verifyBankSlipCodeConcessionaire };

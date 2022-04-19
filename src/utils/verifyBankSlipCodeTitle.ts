@@ -1,7 +1,7 @@
 import { mountBarCodeTitle } from "./mountBarCodeTitle";
 import { verifyBankSlipTitleDigitCheckFields } from "./verifyBankSlipTitleDigitCheckFields";
-import { verifyBarCodeCheckDigit } from "./verifyBarCodeCheckDigit";
-import { verifyBarCodeExpirationFactor } from "./verifyBarCodeExpirationFactor";
+import { verifyBarCodeTitleCheckDigit } from "./verifyBarCodeTitleCheckDigit";
+import { verifyBarCodeTitleExpirationFactor } from "./verifyBarCodeTitleExpirationFactor";
 
 const verifyBankSlipCodeTitle = (bank_slip_code: string) => {
   const bank_slip_composition = {
@@ -43,8 +43,8 @@ const verifyBankSlipCodeTitle = (bank_slip_code: string) => {
     free_field: bar_code.substring(9, 44),
   };
 
-  verifyBarCodeCheckDigit(bar_code, Number(bar_code_composition.check_digit));
-  const expiration_date = verifyBarCodeExpirationFactor(
+  verifyBarCodeTitleCheckDigit(bar_code, Number(bar_code_composition.check_digit));
+  const expiration_date = verifyBarCodeTitleExpirationFactor(
     Number(bar_code_composition.expiration_factor)
   );
 

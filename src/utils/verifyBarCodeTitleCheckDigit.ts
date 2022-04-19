@@ -1,6 +1,6 @@
 import { ContentError } from "../responses/errors/ContentError";
 
-const verifyBarCodeCheckDigit = (barCode: string, check_digit: number) => {
+const verifyBarCodeTitleCheckDigit = (barCode: string, check_digit: number) => {
   const figures = barCode.split("");
   figures.splice(4, 1);
   const figures_reverse = figures.reverse();
@@ -37,4 +37,4 @@ const verifyBarCodeCheckDigit = (barCode: string, check_digit: number) => {
   }
 };
 
-export { verifyBarCodeCheckDigit };
+export { verifyBarCodeTitleCheckDigit };

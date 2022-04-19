@@ -1,7 +1,11 @@
 import { ContentError } from "../responses/errors/ContentError";
 
-function module10(check_digit: string, value: string) {
-  const figures = Object.values(value).join().split("");
+const verifyBarCodeConcessionaireCheckDigit = (
+  barCode: string,
+  check_digit: number
+) => {
+  const figures = barCode.split("");
+  figures.splice(3, 1);
   const figures_reverse = figures.reverse();
 
   const minimum_weight = 1;
@@ -42,21 +46,6 @@ function module10(check_digit: string, value: string) {
       solution: "Verficar o código do boleto informado",
     });
   }
-}
-
-function module11() {}
-
-const verifyBankSlipConcessionaireDigitCheckFields = (field, actual_value_identification: string) => {
-  const { check_digit, ...values } = field;
-
-  const module = {
-    6: module10,
-    7: module10,
-    8: module11,
-    9: module11,
-  };
-
-  module[actual_value_identification](check_digit, values);
 };
 
-export { verifyBankSlipConcessionaireDigitCheckFields };
+export { verifyBarCodeConcessionaireCheckDigit };

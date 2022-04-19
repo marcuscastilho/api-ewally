@@ -1,6 +1,6 @@
 import { formatDate } from "./formatDate";
 
-const verifyBarCodeExpirationFactor = (expiration_factor: number) => {
+const verifyBarCodeTitleExpirationFactor = (expiration_factor: number) => {
   let date_base = null;
 
   if (new Date() >= new Date("2025-02-22 00:00")) {
@@ -15,4 +15,4 @@ const verifyBarCodeExpirationFactor = (expiration_factor: number) => {
   return formatDate(expiration_date);
 }
 
-export { verifyBarCodeExpirationFactor }
+export { verifyBarCodeTitleExpirationFactor }
