@@ -1,6 +1,6 @@
 class BankSlip {
   public barCode: string;
-  public amount?: string;
+  public amount?: number;
   public expirationDate?: string;
 
   constructor(props: BankSlip) {

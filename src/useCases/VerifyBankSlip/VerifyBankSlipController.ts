@@ -6,11 +6,11 @@ class VerifyBankSlipController {
   constructor(private verifyBankSlipUseCase: VerifyBankSlipUseCase) {}
 
   async handle(request: Request): Promise<BankSlip> {
-    const { barCode } = request.params;
+    const { bank_slip_code } = request.params;
 
-    const bankSlip = await this.verifyBankSlipUseCase.execute({ barCode });
+    const bank_slip = await this.verifyBankSlipUseCase.execute(bank_slip_code);
 
-    return bankSlip
+    return bank_slip;
   }
 }
 

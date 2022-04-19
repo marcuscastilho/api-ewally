@@ -1,5 +1,5 @@
 import { BankSlip } from "../models/BankSlip";
 
 export interface IBankSlipRepository {
-  save(barCode: BankSlip): Promise<void>;
+  save(bankSlip: BankSlip): Promise<void>;
 }

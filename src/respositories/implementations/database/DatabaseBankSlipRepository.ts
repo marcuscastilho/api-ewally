@@ -7,7 +7,6 @@ class DatabaseBankSlipRepository implements IBankSlipRepository {
   async save(data: BankSlip): Promise<void> {
     this.bankSlips.push(data);
 
-    console.log(this.bankSlips)
   }
 }
 

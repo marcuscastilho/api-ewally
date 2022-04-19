@@ -6,7 +6,7 @@ import { verifyBankSlipController } from '../useCases/VerifyBankSlip'
 const bankSlipRoutes = [
   {
     method: "get",
-    route: "/boleto/:barCode",
+    route: "/boleto/:bank_slip_code",
     action: "handle",
     controller: verifyBankSlipController,
     reponse_message: VerifiedBankSlip,

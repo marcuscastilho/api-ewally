@@ -3,7 +3,7 @@ import { BankSlip } from '../../models/BankSlip'
 class VerifiedBankSlip extends Error {
   public readonly statusCode: number;
   public readonly barCode: string ;
-  public readonly amount: string;
+  public readonly amount?: number;
   public readonly expirationDate?: string ;
 
   

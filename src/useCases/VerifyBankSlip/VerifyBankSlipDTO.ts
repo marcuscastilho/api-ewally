@@ -1,3 +1,5 @@
 export interface IVerifyBankSlipRequestDTO {
-  barCode: string
+  barCode: string;
+  amount?: number;
+  expirationDate?: Date;
 }

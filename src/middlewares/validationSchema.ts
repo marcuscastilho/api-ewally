@@ -1,7 +1,7 @@
 import { Response, NextFunction } from "express";
 import { IRequest } from "../types/IRequest";
 import { Schema } from "joi";
-import { BodyContentError } from "../responses/errors/BodyContentError";
+import { ContentError } from "../responses/errors/ContentError";
 import { ResponseController } from "../responses/ResponseController";
 
 const validationSchema = async (
@@ -17,10 +17,10 @@ const validationSchema = async (
       await schema.validateAsync(data);
       next();
     } catch (err) {
-      throw new BodyContentError({
+      throw new ContentError({
         tag: err.details[0].context.key,
         message: err.details[0].message,
-        solution: "verificar arquivo enviado",
+        solution: "verificar parametros enviados",
       });
     }
   } catch (err) {
