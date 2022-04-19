@@ -13,7 +13,6 @@ const validationSchema = async (
 ) => {
   try {
     try {
-      console.log(data)
       await schema.validateAsync(data);
       next();
     } catch (err) {
