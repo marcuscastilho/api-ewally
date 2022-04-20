@@ -36,7 +36,7 @@ $ cd teste-fullstack-ewally
 
 Para iniciá-lo, siga os passos abaixo:
 
-# Inserir as variáveis de ambiente 
+### Inserir as variáveis de ambiente 
 Crie um arquivo com o nome .env, copie todas variáveis de amiente do arquivo .env.example que fica na raiz do projeto e cole dentro do arquivo .env criado.
 
 ```bash
@@ -51,6 +51,7 @@ A aplicação estará disponível no endereço http://127.0.0.1:8080. Se passado
 # Iniciar os testes unitários
 $ yarn test
 ```
+</br>
 
 
 ## :memo: Licença
