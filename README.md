@@ -39,7 +39,7 @@ $ cd api-ewally
 Para iniciá-lo, siga os passos abaixo:
 
 ### Inserir as variáveis de ambiente 
-Crie um arquivo com o nome .env, copie todas variáveis de amiente do arquivo .env.example que fica na raiz do projeto e cole dentro do arquivo .env criado.
+Crie um arquivo com o nome <strong>.env</strong> , copie todas variáveis de ambiente do arquivo <strong>.env.example</strong> que fica na raiz do projeto e cole dentro do arquivo .env criado.
 
 ```bash
 # Instalar as dependências
