@@ -21,13 +21,13 @@ for (const route of routes) {
       ),
     async (request: IRequest, response) => {
       try {
-        console.log("Start Controller");
-        const response_controller = await route.controller[route.action](request, response);
+        const response_controller = await route.controller[route.action](
+          request,
+          response
+        );
 
-        console.log("Response Message");
         const success_response = new route.reponse_message(response_controller);
 
-        console.log("Response Controller");
         const handleSuccess = new ResponseController(
           response,
           request,
