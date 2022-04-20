@@ -32,8 +32,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 Clone o projeto e acesse a pasta do mesmo.
 
 ```bash
-$ git clone https://github.com/marcuscastilho/teste-fullstack-ewally.git
-$ cd teste-fullstack-ewally
+$ git clone https://github.com/marcuscastilho/api-ewally.git
+$ cd api-ewally
 ```
 
 Para iniciá-lo, siga os passos abaixo:
