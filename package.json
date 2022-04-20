@@ -1,8 +1,8 @@
 {
-  "name": "teste-fullstack-ewally",
+  "name": "api-ewally",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:marcuscastilho/teste-fullstack-ewally.git",
+  "repository": "git@github.com:marcuscastilho/api-ewally.git",
   "author": "Marcus Castilho",
   "license": "MIT",
   "scripts": {
