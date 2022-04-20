@@ -1,3 +1,19 @@
+<p align="center">
+  <a href="#pencil-projeto">Projeto</a>&nbsp; &nbsp; |&nbsp; &nbsp;
+  <a href="#hammer_and_wrench-tecnologias">Tecnologias</a>&nbsp; &nbsp; |&nbsp; &nbsp;
+  <a href="#computer-como-executar">Como executar</a>&nbsp; &nbsp; |&nbsp; &nbsp;
+  <a href="#memo-licença">Licença</a>&nbsp; &nbsp; |&nbsp; &nbsp;
+</p>
+
+<br>
+
+## :pencil: Projeto
+
+O projeto permite através da aplicação consultar linhas digitáveis de boleto de título bancário
+e pagamento de concessionárias, verificando se a mesma é válida ou não. Sendo válida e
+possuindo valor e/ou data de vencimento ter o retorno desses dados.
+
+
 ## :hammer_and_wrench: Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
@@ -20,6 +36,9 @@ $ cd teste-fullstack-ewally
 
 Para iniciá-lo, siga os passos abaixo:
 
+# Inserir as variáveis de ambiente 
+Crie um arquivo com o nome .env, copie todas variáveis de amiente do arquivo .env.example que fica na raiz do projeto e cole dentro do arquivo .env criado.
+
 ```bash
 # Instalar as dependências
 $ yarn
@@ -27,10 +46,11 @@ $ yarn
 # Iniciar o projeto
 $ yarn dev
 
-O aplicação estará disponível no endereço http://127.0.0.1:8080. Se passados as mesmas configurações de host e porta nas variáveis de ambinete.
+A aplicação estará disponível no endereço http://127.0.0.1:8080. Se passados as mesmas configurações de host e porta nas variáveis de ambinete.
 
 # Iniciar os testes unitários
 $ yarn test
+```
 
 
 ## :memo: Licença
