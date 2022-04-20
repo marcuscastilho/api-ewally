@@ -28,7 +28,6 @@ const verifyBankSlipCodeTitle = (bank_slip_code: string) => {
     },
   };
 
-  console.log(bank_slip_composition)
 
   verifyBankSlipTitleDigitCheckFields(bank_slip_composition.field_1);
   verifyBankSlipTitleDigitCheckFields(bank_slip_composition.field_2);

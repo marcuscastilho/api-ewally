@@ -22,7 +22,6 @@ const verifyBankSlipCodeConcessionaire = (bank_slip_code: string) => {
       check_digit: bank_slip_code.substring(47, 48),
     },
   };
-  console.log('bank_slip_composition', bank_slip_composition)
 
   const actual_value_identification = bank_slip_code.substring(2, 3)
 
