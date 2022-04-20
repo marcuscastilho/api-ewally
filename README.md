@@ -13,6 +13,7 @@ O projeto permite através da aplicação consultar linhas digitáveis de boleto
 e pagamento de concessionárias, verificando se a mesma é válida ou não. Sendo válida e
 possuindo valor e/ou data de vencimento ter o retorno desses dados.
 
+<br>
 
 ## :hammer_and_wrench: Tecnologias
 
@@ -24,6 +25,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Jest](https://jestjs.io/pt-BR/)
 - [Principios SOLID](https://pt.wikipedia.org/wiki/SOLID)
 
+<br>
 
 ## :computer: Como executar
 
